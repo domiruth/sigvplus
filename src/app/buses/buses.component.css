@@ -1,0 +1,120 @@
+.opciones {
+    width: 150px;
+    height: 60px;
+    border: 1px solid;
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    list-style: none;
+}
+
+.opciones:hover {
+    cursor: pointer;
+}
+
+.contenedor-buscador {
+    width: 1300px;
+    height: auto;
+    border: 1px solid;
+    color: black;
+    padding: 25px;
+    border-radius: 5px;
+    margin: 30px 0 30px 0;
+}
+
+.resultados-buses {
+    width: 1350px;
+    height: auto;
+    border: 1px solid;
+    color: black;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 30px 0 30px 10px;
+    margin-left: 0px;
+    display: inline-flex;
+}
+
+.cabecera-tramo {
+    margin: 10px;
+}
+
+.lista-servicios li {
+    display: inline-block;
+    margin: 10px;
+}
+
+.lista-servicios li {
+    list-style: none;
+}
+
+.description-bus {}
+
+.number-tramo {
+    font-size: 25px;
+    margin-left: 20px;
+    border: 1px solid #000000;
+    padding: 9px 17px;
+    border-radius: 100%;
+}
+
+.tipo-bus {
+    font-size: 25px;
+    margin-left: 40px;
+}
+
+.descripcion-bus {
+    margin: 30px;
+}
+
+.asientos-disponibles {
+    margin: 10px;
+    margin-left: 50px;
+}
+
+.number-asientos {
+    margin-left: 15px;
+}
+
+.horario-tramo {
+    margin-left: 25px;
+}
+
+.time-tramo {
+    margin-left: 10px;
+}
+
+.tarifa-bus {
+    width: 300px;
+    position: relative;
+    right: 100px;
+    top: 20px;
+}
+
+.price-tarifa {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.info-price {
+    margin-right: 20px;
+}
+
+.info-compra {
+    font-size: 30px;
+}
+
+.number-tramo1 {
+    font-size: 25px;
+    border: 1px solid #000000;
+    padding: 9px 17px;
+    border-radius: 100%;
+    margin-right: 15px;
+}
+
+.mapa-asientos {
+    width: 650px;
+    height: 600px;
+    border: 1px solid #000000;
+    margin: 20px;
+}

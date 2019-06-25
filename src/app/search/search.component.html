@@ -1,0 +1,184 @@
+<div class="container mt-5">
+    <h4 class="text-right">GENERACIÓN DE RESERVA - VUELO</h4>
+    <ul class="row mt-5">
+        <li class="opciones">
+            <img style="width: 40px;" src="assets/user.png"> Pasajero
+        </li>
+        <li class="opciones">
+            <img style="width: 40px;" src="assets/flight.png"> Itinerario
+        </li>
+        <li class="opciones">
+            <img style="width: 40px;" src="assets/asiento.png"> Asientos
+        </li>
+        <li class="opciones">
+            <img style="width: 40px;" src="assets/security.png"> Seguro
+        </li>
+    </ul>
+    <div class="contenedor-buscador">
+        <h6>Búsqueda de vuelos</h6>
+        <div class="row">
+            <div class="col-sm-5 mt-3">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="rbRoundTrip" name="rbTypeFlight" checked="checked" (click)="isChecked(1)">
+                    <label class="custom-control-label" for="rbRoundTrip">Ida y Vuelta</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="rbOneWay" name="rbTypeFlight" (click)="isChecked(2)">
+                    <label class="custom-control-label" for="rbOneWay">Solo Ida</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="rbMultiCity" name="rbTypeFlight" (click)="isChecked(3)">
+                    <label class="custom-control-label" for="rbMultiCity">Multidestino</label>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div *ngIf="tipo === 1">
+            <div class="row">
+                <div class="form-group mt-3 col-sm-6" id="dvOrigin_1">
+                    <label for="txtOrigin_1">Origen</label>
+                    <input type="text" class="form-control selectAirport" id="txtOrigin_1" [(ngModel)]="searchObj.Origin">
+                    <!--   <div id="dvAirportOrigin_1" class="options selectAirport"></div> -->
+                </div>
+                <div class="form-group mt-3 col-sm-6" id="dvDestination_1">
+                    <label for="txtDestination_1">Destino</label>
+                    <input type="text" class="form-control selectAirport" id="txtDestination_1" [(ngModel)]="searchObj.Destination">
+                    <!--    <div id="dvAirportDestination_1" class="options selectAirport"></div> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group mt-3 col-sm-3" id="dvDepartureDate_1">
+                    <label for="txtFechaSalida_1">Fecha Salida</label><br>
+                    <input type="date" class="form-control" id="txtFechaSalida_1" [(ngModel)]="searchObj.DepartureArrivalDate">
+                </div>
+                <div class="form-group mt-3 col-sm-3" id="dvDepartureTime_1">
+                    <label>Hora de Salida</label><br>
+                    <div class="row">
+                        <input type="text" class="form-control col-5 ml-3 mr-3" id="txtDepartureTimeFrom_1">
+                        <input type="text" class="form-control col-5" id="txtDepartureTimeTo_1">
+                    </div>
+                </div>
+                <div class="form-group mt-3 col-sm-3" id="dvArrivalDate_1">
+                    <label for="txtFechaRetorno_1">Fecha Retorno</label><br>
+                    <input type="date" class="form-control" id="txtFechaRetorno_1" [(ngModel)]="searchObj.DepartureArrivalDate">
+                </div>
+                <div class="form-group mt-3 col-sm-3" id="dvArrivalTime_1">
+                    <label>Hora de Retorno</label><br>
+                    <div class="row">
+                        <input type="text" class="form-control col-5 ml-3 mr-3" id="txtArrivalTimeFrom_1">
+                        <input type="text" class="form-control col-5" id="txtArrivalTimeTo_1">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--     SOLO IDA                  -->
+        <div *ngIf="tipo === 2">
+            <div class="row">
+                <div class="form-group mt-3 col-sm-6" id="dvOrigin_1">
+                    <label for="txtOrigin_1">Origen</label>
+                    <input type="text" class="form-control selectAirport" id="txtOrigin_1">
+                    <div id="dvAirportOrigin_1" class="options selectAirport"></div>
+                </div>
+                <div class="form-group mt-3 col-sm-6" id="dvDestination_1">
+                    <label for="txtDestination_1">Destino</label>
+                    <input type="text" class="form-control selectAirport" id="txtDestination_1">
+                    <div id="dvAirportDestination_1" class="options selectAirport"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group mt-3 col-sm-3" id="dvDepartureDate_1">
+                    <label for="txtFechaSalida_1">Fecha Salida</label><br>
+                    <input type="date" class="form-control" id="txtFechaSalida_1">
+                </div>
+                <div class="form-group mt-3 col-sm-3" id="dvDepartureTime_1">
+                    <label>Hora de Salida</label><br>
+                    <div class="row">
+                        <input type="text" class="form-control col-5 ml-3 mr-3" id="txtDepartureTimeFrom_1">
+                        <input type="text" class="form-control col-5" id="txtDepartureTimeTo_1">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--     MULTIDESTINO                 -->
+        <div *ngIf="tipo === 3">
+            <div class="row">
+                <div class="form-group mt-3 col-sm-6" id="dvOrigin_1">
+                    <label for="txtOrigin_1">Origen</label>
+                    <input type="text" class="form-control selectAirport" id="txtOrigin_1">
+                    <div id="dvAirportOrigin_1" class="options selectAirport" style="display:none"></div>
+                </div>
+                <div class="form-group mt-3 col-sm-6" id="dvDestination_1">
+                    <label for="txtDestination_1">Destino</label>
+                    <input type="text" class="form-control selectAirport" id="txtDestination_1">
+                    <div id="dvAirportDestination_1" class="options selectAirport" style="display:none"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group mt-3 col-sm-3" id="dvDepartureDate_1">
+                    <label for="txtFechaSalida_1">Fecha Salida</label><br>
+                    <input type="date" class="form-control" id="txtFechaSalida_1">
+                </div>
+                <div class="form-group mt-3 col-sm-3" id="dvDepartureTime_1">
+                    <label>Hora de Salida</label><br>
+                    <div class="row">
+                        <input type="text" class="form-control col-5 ml-3 mr-3" id="txtDepartureTimeFrom_1">
+                        <input type="text" class="form-control col-5" id="txtDepartureTimeTo_1">
+                    </div>
+                </div>
+                <div class="form-group mt-3 col-sm-3" id="dvArrivalDate_1">
+                    <label for="txtFechaRetorno_1">Fecha Retorno</label><br>
+                    <input type="date" class="form-control" id="txtFechaRetorno_1">
+                </div>
+                <div class="form-group mt-3 col-sm-3" id="dvArrivalTime_1">
+                    <label>Hora de Retorno</label><br>
+                    <div class="row">
+                        <input type="text" class="form-control col-5 ml-3 mr-3" id="txtArrivalTimeFrom_1">
+                        <input type="text" class="form-control col-5" id="txtArrivalTimeTo_1">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <hr id="dvSeparador_1" />
+        <div class="row buttons-img" id="dvOptions_1" *ngIf="opciones">
+            <a id="btnAdd_1">
+                <img src="assets/add.png" class="botones">
+            </a>
+            <a id="btnRemove_1">
+                <img src="assets/delete.png" class="botones">
+            </a>
+        </div>
+        <div id="multiOption_2"></div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group mt-3 col-7">
+                    <label>Pasajeros</label>
+                    <select class="form-control">
+                      <option value="">03</option>
+                  </select>
+                </div>
+                <div class="form-group mt-3 col-7">
+                    <label>Cabina</label>
+                    <select class="form-control">
+                      <option value="">Economica</option>
+                  </select>
+                </div>
+                <div class="form-group mt-3 col-7">
+                    <label>Escalas</label>
+                    <select class="form-control">
+                      <option value="">Sin Escalas</option>
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="button" value="Buscar" class="btn btn-primary col-2" id="btnSearch" (click)="SearchFlight()" />
+    </div>
+</div>

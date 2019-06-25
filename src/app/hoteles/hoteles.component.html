@@ -1,0 +1,375 @@
+<div class="container mt-5">
+    <h4 class="text-right">BUSQUEDA - HOTELES</h4>
+    <ul class="row mt-5">
+        <li class="opciones">
+            <img style="width: 40px;" src="assets/user.png"> Pasajero
+        </li>
+        <li class="opciones">
+            <img style="width: 40px;" src="assets/hotel.png"> Busqueda
+        </li>
+        <li class="opciones">
+            <img style="width: 40px;" src="assets/book.png"> Reserva
+        </li>
+    </ul>
+    <div class="contenedor-buscador">
+        <h6>Busqueda de Hoteles</h6>
+
+        <div id="divprueba1">
+            <li (click)="selectAirport(this, 1, 1)">AAAAAA</li>
+        </div>
+
+
+
+        <div class="body-form" *ngIf="busqueda">
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Destino: </label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" (click)="showDivAirport(1,1)" (keyup)="filterAirport(1,1)" [(ngModel)]="SearchObj.HotelCityCode" id="txtdestino">
+                    <app-airport (listado)="MatrizAirport"></app-airport>
+                    <!--
+                    <div id="dvAirportOrigin_1" class="options selectAirport" style="display:none"></div>
+                    -->
+                </div>
+            </div>
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Hotel: </label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="txthotel">
+                </div>
+            </div>
+            <div class="form-inline mt-4">
+                <div class="form-group">
+                    <label for="" class="col-form-label">Check-In: </label>
+                    <div class="">
+                        <input type="date" class="form-control mx-sm-4" [(ngModel)]="SearchObj.Start">
+                    </div>
+                </div>
+
+                <div class="form-group ml-5">
+                    <label for="" class="col-form-label">Check-Out: </label>
+                    <div class="">
+                        <input type="date" class="form-control mx-sm-4" [(ngModel)]="SearchObj.End">
+                    </div>
+                </div>
+                <div class="form-group ml-5">
+                    <label for="" class="col-form-label">Nro Noches: </label>
+                    <div class="ml-3">
+                        <label for="">2</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mt-4">
+
+                <label for="" class="col-sm-1 col-form-label">Habitaciones: </label>
+                <div class="col-sm-2">
+                    <div class="input-habitacion tooltipBag">
+                        <div class="nro-habitacion">
+                            <i class="fas fa-bed"></i>
+                            <input type="text" class="input-text" [(ngModel)]="SearchObj.cantidadh">
+                        </div>
+                        <div class="nro-personas">
+                            <i class="fas fa-user-alt"></i>
+                            <input type="text" class="input-text" [(ngModel)]="SearchObj.cantidadp">
+                        </div>
+                    </div>
+                    <!-- <input type="text" class="form-control tooltipBag" onclick="MostrarModal()" id="txthabitacion" [(ngModel)]="SearchObj.cantidadh"> -->
+                    <div class="modal-info tooltipBagDiv" id="pop1" *ngIf="modal">
+                        <div id="habitacion_1">
+                            <div id="seccion_habitacion">
+                                <div class="title-room">
+                                    <span>Habitacion 1</span>
+                                </div>
+                                <hr>
+                                <div class="number-adults">
+                                    <span>Adultos</span>
+                                    <div class="input-group number-spinner">
+                                        <span class="input-group-btn">
+                                                            <button class="btn btn-danger" data-dir="dwn"><i class="fas fa-minus"></i></button>
+                                                        </span>
+                                        <input type="text" class="form-control text-center" value="1" disabled id="txtadultos">
+                                        <span class="input-group-btn">
+                                                            <button class="btn btn-danger" data-dir="up"><i class="fas fa-plus"></i></button>
+                                                        </span>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <div id="habitacion_2"></div>
+                        <div id="options_1">
+                            <div class="btn-agregar" id="divbotones_1" style="display: block;">
+                                <button class="text-btn" onclick="AddHabitaciones(1)">Añadir habitacion</button>
+                                <button class="btn btn-danger añadir" onclick="OcultarModal()">Aplicar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label for="" class="col-sm-2 col-form-label" style="margin-left: 150px; display: block;">Cercania al Aereopuerto: </label>
+                <div class="col-sm-2">
+                    <select name="" id="" class="form-control">
+                      <option value="1">20 km</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Estrellas </label>
+                <div class="col-sm-2">
+                    <select name="" id="" class="form-control">
+                        <option value="13">1 Estrella</option>
+                        <option value="13">2 Estrellas</option>
+                        <option value="16">3 Estrellas</option>
+                        <option value="7">4 Estrellas</option>
+                        <option value="8">5 Estrellas</option>
+                      </select>
+                </div>
+            </div>
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Filtro por precio </label>
+                <div class="precio">
+                    <p>Precio: <span id="demo"></span></p>
+                </div>
+                <input type="range" min="1" max="100" value="50" class="col-3 slider" id="myRange">
+            </div>
+            <div class="form-group mt-5">
+                <button class="btn btn-success col-2" (click)="SearchHotel()">Buscar</button>
+            </div>
+            <img src="assets/desplegar.png" class="img-desplegar" (click)="ocultarResultados()">
+        </div>
+    </div>
+
+
+
+    <div class="resultados-hoteles" *ngIf="mostrar">
+        <div class="filter-order">
+            <div class="form-inline">
+                <label for="">ORDENAR POR</label>
+                <select name="" id="" class="form-control ml-4">
+                   <option value="">Precio: menor a mayor</option>
+                   <option value="">Precio: mayor a menor</option>
+                   <option value="">Estrellas: mayor a menor</option>
+                   <option value="">Estrellas: menor a mayor</option>
+               </select>
+            </div>
+            <div class="form-inline ml-5">
+                <label for="">MONEDA</label>
+                <select name="" id="" class="form-control ml-4">
+                       <option value="">Nuevo Sol</option>
+                       <option value="">Dolar</option>
+                   </select>
+            </div>
+        </div>
+        <div class="filtros-resultados">
+            <ul class="filtro-estrellas">
+                <li><span class="title-filtro">Estrellas</span></li>
+                <li>
+                    <span>
+                        <input type="checkbox">
+                        <span class="item-filter">Todas las estrellas</span>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <input type="checkbox">
+                        <span class="item-filter"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <input type="checkbox">
+                        <span class="item-filter"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <input type="checkbox">
+                        <span class="item-filter"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <input type="checkbox">
+                        <span class="item-filter"><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <input type="checkbox">
+                        <span class="item-filter"><i class="fas fa-star"></i></span>
+                    </span>
+                </li>
+            </ul>
+
+            <ul class="filtro-servicios">
+                <li><span class="title-filtro">Servicios</span></li>
+                <li>
+                    <span>
+                        <input type="checkbox">
+                        <span class="item-filter">Todas los servicios</span>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <input type="checkbox">
+                        <span class="item-filter">Wifi</span>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <input type="checkbox">
+                        <span class="item-filter">Desayuno</span>
+                    </span>
+                </li>
+            </ul>
+
+            <ul class="filtro-precio">
+                <li><span class="title-filtro">Precio</span></li>
+                <li>
+                    <span>
+                        <input type="range" min="0" max="50"/>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="resultados-busqueda row" *ngFor="let item of results">
+            <div class="col-sm-4">
+                <img src="assets/motel.jpg" class="img-hotel">
+            </div>
+            <div class="detalle-hotel col-sm-4">
+                <span class="name-hotel">{{item.hotelName}}</span><br>
+                <span><img src="assets/map.png" class="icon-map"></span><span>Mapa</span>
+                <span class="name-street">{{item.AddressLine}}</span><br>
+                <span class="description-hotel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem laborum quaerat dolor necessitatibus voluptate, ut minus, est ea nobis ducimus odio iusto dolore in laudantium inventore rerum, exercitationem blanditiis non!</span><br>
+                <div [ngSwitch]="item.HotelSegmentCategoryCode ">
+                    <span class="number-star">
+                                <i class="fas fa-star fa-1x"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </span><br>
+                </div>
+                <div class="description-distance">
+                    <span style="display: none;">2.2 km al centro de la ciudad</span><br>
+                    <span>{{item.Distance}} km aproximado al aereopuerto</span>
+                </div>
+            </div>
+            <div class="detalle-tarifa col-sm-4">
+                <div class="tarifa-convenio">
+                    <span class="img-convenio1">
+                        <img src="assets/circulo.png">
+                    </span>
+                    <span>USD </span>
+                    <span></span>
+                </div>
+                <div class="tarifa-total">
+                    <span>Tarifa total: </span><span>USD </span><span>148.30</span>
+                </div>
+                <div class="politicas">
+                    <span>Ver politicas incumplidas</span>
+                </div>
+                <button class="btn btn-danger btn-select" (click)="MostrarDetalleHabitacion()">Seleccionar</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contenedor-detalle_room" *ngIf="estado">
+        <div>
+            <span class="btn-galeria">
+                        <button class="btn btn-light">Ver Galeria</button>
+                    </span>
+            <div class="motel-gallery">
+                <img src="assets/motel.jpg" class="img1">
+                <img src="assets/motel.jpg" class="img2">
+                <img src="assets/motel.jpg" class="img3">
+                <img src="assets/motel.jpg" class="img4">
+            </div>
+            <div class="info-hotel-cabecera">
+                <span class="title-hotel">Grand Hyatt New York</span>
+                <span class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+            </div>
+            <div class="location-hotel">
+                <span>Nueva York, Estados Unidos.   </span>
+                <span>A 1,01 km del centro</span>
+                <span class="ml-3"><img src="assets/map.png" class="icon-map1"></span><span>Mapa</span>
+            </div>
+            <div class="services-hotel">
+                <span class="item-wifi"><i class="fas fa-wifi"></i></span>
+                <span>WIFI gratis</span>
+                <span class="item-gimnasio"><i class="fas fa-dumbbell"></i></span>
+                <span>Gimnasio</span>
+                <span class="item-spa"><i class="fas fa-sleigh"></i></span>
+                <span>Spa</span>
+            </div>
+        </div>
+
+
+
+
+        <div class="seccion-habitacion">
+            <div class="detalle-servicios">
+                <span class="item1">Nombre: </span>
+                <span class="item2">Standard Twin + Breakfast</span>
+                <span class="item3">Standard</span>
+                <span class="item4">2 adultos</span>
+                <div class="des-check">
+                    <div>
+                        <span>Check-In: </span><span>15:00 pm</span>
+                    </div>
+                    <div>
+                        <span>Check-Out: </span><span>11:00 am</span>
+                    </div>
+                </div>
+                <div class="servicios">
+                    <div>
+                        <span>Desayuno Buffet</span>
+                    </div>
+                    <div>
+                        <span>No se puede cancelar 72 horas antes</span>
+                    </div>
+                </div>
+                <div class="items-services">
+                    <ul class="list-services">
+                        <li><i class="fas fa-wifi"></i><span class="service">Wifi</span></li>
+                        <li><i class="fas fa-coffee"></i><span class="service">Desayuno</span></li>
+                        <li><i class="fas fa-bicycle"></i><span class="service">Bicicleta</span></li>
+                    </ul>
+                </div>
+                <div class="table-precios">
+                    <table class="table table-bordered" style="width: 350px;">
+                        <thead>
+                            <tr>
+                                <th>19/JUN</th>
+                                <th>20/JUN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$95.49</td>
+                                <td>$95.49</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="contenedor-tarifa">
+                <div class="price-total">
+                    <span>Tarifa Total</span>
+                    <span>  $190.98</span>
+                </div>
+                <div class="descripcion-promedio">
+                    <span>Precio Promedio</span>
+                </div>
+                <div class="precio-promedio">
+                    <span class="img-convenio"><img src="assets/circulo-verde.png"></span>
+                    <span>$120.33</span>
+                </div>
+                <div>
+                    <button class="btn btn-danger">Reservar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

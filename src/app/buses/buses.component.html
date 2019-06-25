@@ -1,0 +1,161 @@
+<div class="container mt-5">
+    <h4 class="text-right">BUSQUEDA - BUSES</h4>
+    <ul class="row mt-5">
+        <li class="opciones">
+            <img style="width: 40px;" src="assets/hotel.png"> Busqueda
+        </li>
+        <li class="opciones">
+            <img style="width: 40px;" src="assets/book.png"> Reserva
+        </li>
+    </ul>
+    <div class="contenedor-buscador">
+        <h6>Busqueda de buses</h6>
+        <div class="row">
+            <div class="col-sm-5 mt-3">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="rbRoundTrip" name="rbTypeFlight" checked="checked" (click)="isChecked(1)">
+                    <label class="custom-control-label" for="rbRoundTrip">Ida y Vuelta</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="rbOneWay" name="rbTypeFlight" (click)="isChecked(2)">
+                    <label class="custom-control-label" for="rbOneWay">Solo Ida</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5" *ngIf="tipo === 1">
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Origen: </label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Destino: </label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Fecha salida: </label>
+                <div class="col-sm-5">
+                    <input type="date" class="form-control col-4">
+                </div>
+            </div>
+
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Fecha retorno: </label>
+                <div class="col-sm-5">
+                    <input type="date" class="form-control col-4">
+                </div>
+            </div>
+
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Pasajeros: </label>
+                <div class="col-sm-5">
+                    <select name="" id="" class="form-control col-4">
+                      <option value="">1 pasajero</option> 
+                      <option value="">2 pasajeros</option> 
+                      <option value="">3 pasajero3</option> 
+                    </select>
+                </div>
+            </div>
+            <div class="form-group mt-4">
+                <button class="btn btn-danger col-2">Buscar</button>
+            </div>
+        </div>
+
+        <div class="mt-5" *ngIf="tipo === 2">
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Origen: </label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Destino: </label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Fecha salida: </label>
+                <div class="col-sm-5">
+                    <input type="date" class="form-control col-4">
+                </div>
+            </div>
+
+            <div class="form-group row mt-4">
+                <label for="" class="col-sm-1 col-form-label">Pasajeros: </label>
+                <div class="col-sm-5">
+                    <select name="" id="" class="form-control col-4">
+                    <option value="">1 pasajero</option> 
+                    <option value="">2 pasajeros</option> 
+                    <option value="">3 pasajero3</option> 
+                  </select>
+                </div>
+            </div>
+            <div class="form-group mt-4">
+                <button class="btn btn-danger col-2">Buscar</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="resultados-buses">
+            <div>
+                <div class="cabecera-tramo">
+                    <span class="number-tramo">1</span>
+                    <span class="tipo-bus">Bus cama</span>
+                </div>
+                <div class="descripcion-bus col-6">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora, minima qui repellat non sapiente atque odio cum amet odit dignissimos, dolores natus? Quos eveniet, consequatur dicta nobis reprehenderit natus voluptas?
+                </div>
+                <div class="row">
+                    <div class="servicios-bus">
+                        <ul class="lista-servicios">
+                            <li><i class="fas fa-utensils"></i></li>
+                            <li><i class="fas fa-wifi"></i></li>
+                            <li><i class="fas fa-tablet-alt"></i></li>
+                            <li><i class="fas fa-map-marker-alt"></i></li>
+                        </ul>
+                    </div>
+                    <div class="asientos-disponibles">
+                        <span>Asientos disponibles</span>
+                        <span class="number-asientos">8</span>
+                    </div>
+                    <div class="horario-tramo">
+                        <span>Horario salida:</span><span class="time-tramo">4:00pm</span><br>
+                        <span>Horario estimada de llegada:</span><span class="time-tramo">4:00pm</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tarifa-bus">
+                <div class="price-tarifa">
+                    <span class="info-price">Precio:</span>
+                    <span>S/.</span><span>100</span>
+                </div>
+                <span>
+                    <button class="btn btn-danger ml-4">Seleccionar</button>
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <div class="info-compra">
+            <span class="number-tramo1">1</span>
+            <span>Seleccione su asiento</span>
+            <span>/Asientos de ida</span>
+        </div>
+        <div class="mapa-asientos">
+
+        </div>
+    </div>
+</div>

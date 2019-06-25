@@ -1,0 +1,284 @@
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.opciones {
+    width: 150px;
+    height: 60px;
+    border: 1px solid;
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.opciones:hover {
+    cursor: pointer;
+}
+
+.contenedor-buscador {
+    width: 1300px;
+    height: auto;
+    border: 1px solid;
+    color: black;
+    padding: 25px;
+    border-radius: 5px;
+    margin: 30px 0 30px 0;
+}
+
+.contenedor-form {
+    width: 1250px;
+    height: 500px;
+    border: 1px solid;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.container-resultados {
+    width: 1300px;
+    height: 700px;
+    border: 1px solid;
+    color: black;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.contenedor-resultados {
+    width: 1250px;
+    height: 550px;
+    border: 1px solid;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#OptionResult {
+    width: 200px;
+    height: 90px;
+    border: 1px solid;
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.resultados-vuelos {
+    width: 1200px;
+    height: 400px;
+    border: 1px solid;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.section-left {
+    width: 80%;
+}
+
+.section_right {
+    width: 22%;
+    margin-left: -5px;
+    background: #ecedef;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.ciudad {
+    width: 10em;
+    display: inline-block;
+    vertical-align: top;
+    padding: 1em 0em;
+    font-size: 1.1em;
+}
+
+.dosCiudades i {
+    font-size: 2.5em;
+    color: gray;
+    padding: 0.8em 4em;
+}
+
+.ciudad__nombre {
+    font-weight: bold;
+}
+
+.ciudad__title {
+    color: #A21A1A;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.dosCiudades {
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.tablas {
+    padding-bottom: 2em;
+    border-bottom: 1px solid #d7cccc;
+}
+
+.cuadro {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 1.1em;
+    margin-left: -3px;
+    padding-right: 0.3em;
+}
+
+.cuadro_salida {
+    width: 40%;
+}
+
+.cuadro_title--bold {
+    background: gray;
+}
+
+.cuadro_title {
+    background: #a7a2a2;
+    padding: 0.5em;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.cuadro_body {
+    border: 1px solid #d7cccc;
+    padding: 1em 1.5em;
+    margin-top: 0.3em;
+    min-height: 4em;
+}
+
+.cuadro_row {
+    text-align: left;
+}
+
+.cuadro_logo {
+    width: 1em;
+}
+
+.cuadro_time {
+    margin: 0em 1em;
+    font-size: 1.2em;
+}
+
+.cuadro__circle {
+    border: 2px solid #A21A1A;
+    border-radius: 50%;
+    margin: 0em 1em;
+}
+
+.cuadro__circle,
+.cuadro__time,
+.cuadro__toltip {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cuadro_toltip {
+    color: #A21A1A;
+    width: 3.5em;
+    cursor: pointer;
+    border-bottom: 1px solid #A21A1A;
+    font-size: 0.8em;
+    vertical-align: middle;
+}
+
+.cuadro_text {
+    color: gray;
+    text-align: center;
+    padding: 0.162em 0em;
+    margin-bottom: 0.0em;
+}
+
+.cuadro__familia {
+    width: 15%;
+}
+
+.cuadro__text--bold {
+    font-weight: bold;
+}
+
+.cuadro__duracion {
+    width: 20%;
+    min-width: 9em;
+}
+
+.cuadro_clock {
+    width: 5em;
+    margin: 0 auto;
+    background: #f1f1f1;
+    padding: 0.05em 0.1em;
+    border: 1px solid gray;
+    margin-bottom: 0.1em;
+    text-align: center;
+}
+
+.cuadro_age {
+    color: gray;
+    text-align: center;
+    padding: 0.13em 0em;
+    margin-bottom: 0.08em;
+}
+
+.btn-circle {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+    background: blue;
+}
+
+.buttons-img {
+    margin: 5px;
+}
+
+.botones {
+    width: 35px;
+    height: auto;
+    margin: 7px;
+}
+
+.botones:hover {
+    cursor: pointer;
+}
+
+.options {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    width: 94%;
+    margin-top: 10px;
+    padding: 0px 0px 0px 0px;
+    box-shadow: 0px 0px 3px 2px #d6d6d6;
+}
+
+.options ul {
+    padding: 10px 0px;
+    margin-top: -12px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.options ul li {
+    list-style: none;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 9px 0px 5px 10px;
+    font-weight: lighter;
+}
+
+.liSelector {
+    cursor: default;
+}
+
+.liSelector:hover {
+    background-color: gray;
+}
