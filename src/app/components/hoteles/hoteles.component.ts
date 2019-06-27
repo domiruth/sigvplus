@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HotelService } from '../services/hotel-service.service';
-import { SearchHotel } from '../models/SearchHotel';
-import { HotelResults } from '../models/HotelResults';
+import { SearchHotel } from '../../models/SearchHotel';
+import { HotelResults } from '../../models/HotelResults';
 import { all } from 'q';
+import { HotelService } from 'src/app/services/hotel-service.service';
+import { HotelDetails } from '../../models/HotelDetails';
+import { ThrowStmt } from '@angular/compiler';
 
 declare var jquery: any;
 declare var $: any;
@@ -16,6 +18,7 @@ declare var $: any;
 })
 export class HotelesComponent implements OnInit {
 
+  codeCity: string;
   stringAirport: string;
   busqueda: boolean = true;
   mostrar: boolean = false;
@@ -24,42 +27,49 @@ export class HotelesComponent implements OnInit {
   listaPrecio: any[] = [];
   MatrizAirportGeneral: any[] = [];
   MatrizAirport: any[] = [];
+  MatrizAirport2: any[] = [];
   typeFlight: string = 'RT';
   modal: boolean = false;
   txtdemo1: string = "MIA";
+  HotelCityCode: string;
+  details: HotelDetails[];
+  inputof: boolean = false;
 
-  SearchObj: any = {  
-    HotelCityCode: 'MIA',
-	  category: '8',
+  flagMatrizAirport2: boolean = false;
+
+  SearchObj: any = { 
+    HotelCityCode: '',
 	  Start: '',
 	  End: '',
 	  MaxRate: '300.00',
 	  MinRate: '100.00',
 	  cantidadh: '',
-	  cantidadp: ''
+    cantidadp: '',
+    SegmentCategoryCode: '16'
   };
 
+  CodeObj: any = {
+    namecity: ''
+  }   
+
   prueba: string = '150';
+
   constructor(public service: HotelService) {
-    console.log("constructor");
   }
 
   ngOnInit() {
     /*this.GetPriceMin();*/
-
     console.log("ngOnInit");
-
     this.FilterAirport();
 
     //console.log($("#txtdestino").val());
 
-    setTimeout(function(){console.log($("#txtdestino").val());}, 5000);
+    //setTimeout(function(){console.log($("#txtdestino").val());}, 5000);
   }
 
-  MostrarModal() {
-    this.modal = true;
-  }
-  
+
+
+
   ocultarResultados() {
     this.mostrar = false;
   }
@@ -72,22 +82,42 @@ export class HotelesComponent implements OnInit {
    this.mostrar = false;
    this.busqueda = false;
    this.estado = true;
+   this.SearchHotel();
   }
 
 SearchHotel() {
-  this.service.SearchHotel(this.SearchObj).subscribe(data => {
-    this.results = data;
-    console.log(this.results);
-  });
+  this.SacarRegex();
+  this.service.SearchHotel(this.SearchObj).subscribe(
+    data => {
+      this.results = data;
+      console.log(this.results);
+    },
+    error => console.log('HTTP Error', error),
+    () => {
+      console.log('HTTP request completed.');
+      this.mostrar = true;
+    }
+  );
 
-  this.mostrar = true;
+  //this.mostrar = true;
 }
 
+HotelDetails() {
+  this.service.Hotel(this.SearchObj).subscribe(
+    data => {
+      this.details = data;
+      console.log(this.details);
+    },
+    error => console.log('HTTP Error', error),
+    () => {
+      console.log('HTTP request completed.');
+      this.mostrar = true;
+    }
+  );
+}
 
   FilterAirport() {
-    console.log("entro");
     this.service.FilterAirport().subscribe(data => {
-      console.log(data);
       this.showAirport(data);
     });
   }
@@ -122,8 +152,11 @@ FilterMatrizAirport(txt, div) {
 }
 
  CreateMatrizAirport(txt) {
-  console.log("CreateMatrizAirport");
-  console.log("txt: " + txt);
+  this.MatrizAirport = [];
+
+  let listado2: any[] = [];
+  this.flagMatrizAirport2 = false;
+
   const nAirport = this.stringAirport.length;
   let count = 0;
   let campos;
@@ -132,12 +165,8 @@ FilterMatrizAirport(txt, div) {
   let campoEvaluar = '';
   let txtFiltro = '';
   if (txt !== null) {
-    txtFiltro = this.SearchObj.HotelCityCode;
-    console.log(txtFiltro);
-    console.log(txtFiltro);
-    console.log(txtFiltro);
+    txtFiltro = this.CodeObj.namecity;
       //txtFiltro = (document.getElementById(txt) as HTMLInputElement).value;
-
   }
   for (let i = 0; i < nAirport; i++) {
       campos = this.stringAirport[i].split('|');
@@ -156,25 +185,42 @@ FilterMatrizAirport(txt, div) {
           for (let j = 0; j < nCampos; j++) {
               this.MatrizAirport[count][j] = campos[j];
           }
+          let obj = {
+            valor1: campos[0],
+            valor2: campos[1],
+            valor3: campos[2],
+            valor4: campos[3],
+            valor5: campos[4],
+            valor6: campos[5],
+            valor7: campos[6],
+            valor8: campoEvaluar
+          };
+
+          listado2.push(obj);
           count++;
       }
   }
-  console.log("CreateMatrizAirport FIN");
+
+  this.MatrizAirport2 = listado2;
+
+  this.flagMatrizAirport2 = true;
+  $("#divwebCompAirport").show();
 }
+
 
 ShowMatrizAirport(div) {
 
-  let divprueba1 = $("#divprueba1").html();
-  console.log(divprueba1);
+  //console.log("this.MatrizAirport = [];");
+  //this.MatrizAirport = [];
 
-  console.log("ShowMatrizAirport");
-  console.log("div: "+div);
+  let divprueba1 = $("#divprueba1").html();
   let content = '';
   let campoEvaluar = '';
   const divIgualar = div.split('_')[0];
   const divPosition = div.split('_')[1];
   if (this.MatrizAirport !== null && this.MatrizAirport.length > 0) {
       const nRegisters = this.MatrizAirport.length;
+
       for (let i = 0; i < nRegisters; i++) {
           campoEvaluar = '[';
           campoEvaluar += this.MatrizAirport[i][3].toUpperCase().trim(); // CodeCity
@@ -184,7 +230,6 @@ ShowMatrizAirport(div) {
           campoEvaluar += this.MatrizAirport[i][1].toUpperCase().trim(); // NameCity
           campoEvaluar += ' - ';
           campoEvaluar += this.MatrizAirport[i][2].toUpperCase().trim(); // NameCountry
-          content += divprueba1;
           /*
           content += "<li id='airline";
           content += this.MatrizAirport[i][3];
@@ -207,27 +252,14 @@ ShowMatrizAirport(div) {
       content = 'No se encontraron ciudades o aeropuertos con ese nombre';
   }
   if (div !== null) {
-      document.getElementById(div).innerHTML = '<div><ul>' + content + '</ul></div>';
+     // document.getElementById(div).innerHTML = '<div><ul>' + content + '</ul></div>';
   }
-  console.log("ShowMatrizAirport FIN");
 }
 
-selectAirport(value, type, position) {
-  console.log("value: " + value);
-  console.log("type: " + type);
-  console.log("position: " + position);
-  if (type === 1) {
-      //(document.getElementById("txtOrigin_" + position) as HTMLInputElement).value = document.getElementById(value.id).innerHTML;
-      //(document.getElementById("dvAirportOrigin_" + position) as HTMLInputElement).style.display = 'none';
-      this.SearchObj.HotelCityCode = "xxxxxxx";
-  } else if (type === 2) {
-      (document.getElementById("txtDestination_" + position) as HTMLInputElement).value = document.getElementById(value.id).innerHTML;
-      (document.getElementById("dvAirportDestination_" + position) as HTMLInputElement).style.display = 'none';
-  }
-}
+
+
 
 showDivAirport(type, position) {
-  console.log("showDivAirport");
   let txt = '';
   let div = '';
   if (type === 1) {
@@ -237,29 +269,19 @@ showDivAirport(type, position) {
       txt = 'txtDestination_' + position;    
       div = 'dvAirportDestination_' + position;
   }
-  if ((document.getElementById(div) as HTMLInputElement).style.display === 'none') {
-    console.log("showDivAirport paso 1");
-      (document.getElementById(div) as HTMLInputElement).style.display = 'block';
+  if ($(div).css({"display" : "none"})) {  //((document.getElementById(div) as HTMLInputElement).style.display === 'none') {
+    $(div).css({"display" : "none"})
+     // (document.getElementById(div) as HTMLInputElement).style.display = 'block';
   }
-  console.log("showDivAirport paso 2");
-
-  console.log("txt: " + txt);
-  console.log("div: " + div);
-
-
   let valortxt = this.SearchObj.HotelCityCode;
-  console.log("valortxt: " + valortxt);
 
   if (valortxt !== '') {
-    console.log("showDivAirport paso 3");
       this.FilterMatrizAirport(txt, div);
   }
-  console.log("showDivAirport paso FIN");
 }
 
+
 filterAirport(type, position) {
-  console.log("type: " + type);
-  console.log("position: " + position);
   let txt = '';
   let div = '';
   if (type === 1) {
@@ -271,6 +293,26 @@ filterAirport(type, position) {
   }
   this.FilterMatrizAirport(txt, div);
 }
+
+
+eventoHijoPadre(event) {
+  this.CodeObj.namecity = event;
+  this.flagMatrizAirport2 = false;
+  $("#divwebCompAirport").hide();
+  let destino = this.CodeObj.namecity;
+  this.SearchObj.HotelCityCode = this.SacarRegex(); 
+}
+
+
+SacarRegex() {
+  let str = this.CodeObj.namecity;
+  let patt = new RegExp(/\[\w{3}\]/);
+  let res = patt.exec(str);
+  let patt1 = new RegExp(/\w{3}/);
+  let res1 = patt1.exec(res[0]);
+  console.log(res1[0]);
+  return res1[0];
+ }
 
 
   /*

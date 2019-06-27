@@ -14,18 +14,15 @@
     <div class="contenedor-buscador">
         <h6>Busqueda de Hoteles</h6>
 
-        <div id="divprueba1">
-            <li (click)="selectAirport(this, 1, 1)">AAAAAA</li>
-        </div>
-
 
 
         <div class="body-form" *ngIf="busqueda">
             <div class="form-group row mt-4">
                 <label for="" class="col-sm-1 col-form-label">Destino: </label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" (click)="showDivAirport(1,1)" (keyup)="filterAirport(1,1)" [(ngModel)]="SearchObj.HotelCityCode" id="txtdestino">
-                    <app-airport (listado)="MatrizAirport"></app-airport>
+                    <input type="text" class="form-control" [value]="codeCity" (click)="showDivAirport(1,1)" [(ngModel)]="CodeObj.namecity" (keyup)="filterAirport(1,1)" id="txtdestino">
+                    <input type="text" [(ngModel)]="SearchObj.HotelCityCode" *ngIf="inputof">
+                    <app-airport [listado]="MatrizAirport2" (texto1)="eventoHijoPadre($event)"></app-airport>
                     <!--
                     <div id="dvAirportOrigin_1" class="options selectAirport" style="display:none"></div>
                     -->
@@ -41,7 +38,7 @@
                 <div class="form-group">
                     <label for="" class="col-form-label">Check-In: </label>
                     <div class="">
-                        <input type="date" class="form-control mx-sm-4" [(ngModel)]="SearchObj.Start">
+                        <input class="form-control mx-sm-4" [(ngModel)]="SearchObj.Start">
                     </div>
                 </div>
 
@@ -73,7 +70,7 @@
                         </div>
                     </div>
                     <!-- <input type="text" class="form-control tooltipBag" onclick="MostrarModal()" id="txthabitacion" [(ngModel)]="SearchObj.cantidadh"> -->
-                    <div class="modal-info tooltipBagDiv" id="pop1" *ngIf="modal">
+                    <div class="modal-info tooltipBagDiv" id="pop1" style="display: none;">
                         <div id="habitacion_1">
                             <div id="seccion_habitacion">
                                 <div class="title-room">
@@ -234,42 +231,8 @@
             </ul>
         </div>
 
-        <div class="resultados-busqueda row" *ngFor="let item of results">
-            <div class="col-sm-4">
-                <img src="assets/motel.jpg" class="img-hotel">
-            </div>
-            <div class="detalle-hotel col-sm-4">
-                <span class="name-hotel">{{item.hotelName}}</span><br>
-                <span><img src="assets/map.png" class="icon-map"></span><span>Mapa</span>
-                <span class="name-street">{{item.AddressLine}}</span><br>
-                <span class="description-hotel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem laborum quaerat dolor necessitatibus voluptate, ut minus, est ea nobis ducimus odio iusto dolore in laudantium inventore rerum, exercitationem blanditiis non!</span><br>
-                <div [ngSwitch]="item.HotelSegmentCategoryCode ">
-                    <span class="number-star">
-                                <i class="fas fa-star fa-1x"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </span><br>
-                </div>
-                <div class="description-distance">
-                    <span style="display: none;">2.2 km al centro de la ciudad</span><br>
-                    <span>{{item.Distance}} km aproximado al aereopuerto</span>
-                </div>
-            </div>
-            <div class="detalle-tarifa col-sm-4">
-                <div class="tarifa-convenio">
-                    <span class="img-convenio1">
-                        <img src="assets/circulo.png">
-                    </span>
-                    <span>USD </span>
-                    <span></span>
-                </div>
-                <div class="tarifa-total">
-                    <span>Tarifa total: </span><span>USD </span><span>148.30</span>
-                </div>
-                <div class="politicas">
-                    <span>Ver politicas incumplidas</span>
-                </div>
-                <button class="btn btn-danger btn-select" (click)="MostrarDetalleHabitacion()">Seleccionar</button>
-            </div>
-        </div>
+        <app-hotelhijo [listado]="results"></app-hotelhijo>
+
     </div>
 
 

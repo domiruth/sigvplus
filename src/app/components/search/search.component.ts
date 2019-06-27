@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VueloService } from '../services/vuelo.service';
+import { VueloService } from '../../services/vuelo.service';
 
 
 @Component({

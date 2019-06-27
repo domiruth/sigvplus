@@ -1,0 +1,16 @@
+<div class="container mt-5">
+    <label for="">Inicio de Sesion</label>
+    <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control col-5 Require" id="txtUser" [(ngModel)]="LoginObj.User" data-validate="Falta Ingresar Usuario">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control col-5 Require" [(ngModel)]="LoginObj.Password" data-validate="Falta Ingresar Password">
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="ValidateLogin()">Ingresar</button>
+</div>

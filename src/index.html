@@ -49,14 +49,23 @@
             var target = e.target || e.srcElement;
             var modal = document.getElementById("pop1");
             var texto = document.getElementById("txthabitacion");
+            var destino = document.getElementById("txtdestino");
+            var ciudades = document.getElementById("divwebCompAirport");
+            var origenbus = document.getElementById("txtorigen");
+            var destinobus = document.getElementById("txtdestino");
+            var ciudadesbus = document.getElementById("divCity");
+            var ciudadesbus2 = document.getElementById("divCitydestino");
             do {
-                if (modal === target || texto === target) {
+                if (modal === target || texto === target || destino === target || ciudades === target || origenbus === target || destinobus === target || ciudadesbus === target || ciudadesbus2 === target) {
                     return;
-
                 }
                 target = target.parentNode;
             } while (target);
             //document.getElementById("pop1").style.display = "none";
+
+            $("#divwebCompAirport").hide();
+            $("#divCity").hide();
+            $("#divCitydestino").hide();
         }
 
 

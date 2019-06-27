@@ -27,21 +27,25 @@
             <div class="form-group row mt-4">
                 <label for="" class="col-sm-1 col-form-label">Origen: </label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" (keydown)="MostrarCiudades(1)" id="txtorigen" [(ngModel)]="CodeObj.codeorigen">
+                    <input type="text" *ngIf="divcodecity" [(ngModel)]="SearchObj.origen">
+                    <app-city [Listado]="Listaciudad" (nameCity)="eventoNameCity($event)" (codecity)="eventoCodeCity($event)"></app-city>
                 </div>
             </div>
 
             <div class="form-group row mt-4">
                 <label for="" class="col-sm-1 col-form-label">Destino: </label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" (keydown)="MostrarCiudades(2)" id="txtdestino" [(ngModel)]="CodeObj.codedestino">
+                    <input type="text" *ngIf="divcodecity" [(ngModel)]="SearchObj.destino">
+                    <app-citydestino [Listado2]="Listaciudad" (nameCityDes)="eventoNameCityDes($event)" (codecityDes)="eventoCodeCityDes($event)"></app-citydestino>
                 </div>
             </div>
 
             <div class="form-group row mt-4">
                 <label for="" class="col-sm-1 col-form-label">Fecha salida: </label>
                 <div class="col-sm-5">
-                    <input type="date" class="form-control col-4">
+                    <input type="date" class="form-control col-4" [(ngModel)]="SearchObj.fecha">
                 </div>
             </div>
 
@@ -63,7 +67,7 @@
                 </div>
             </div>
             <div class="form-group mt-4">
-                <button class="btn btn-danger col-2">Buscar</button>
+                <button class="btn btn-danger col-2" (click)="SearchBus()">Buscar</button>
             </div>
         </div>
 
@@ -106,14 +110,15 @@
     </div>
 
     <div>
-        <div class="resultados-buses">
+        <div class="resultados-buses" *ngFor="let item of results; let i = index">
             <div>
                 <div class="cabecera-tramo">
-                    <span class="number-tramo">1</span>
-                    <span class="tipo-bus">Bus cama</span>
+                    <span class="number-tramo">{{i + 1}}</span>
+                    <span class="tipo-bus">{{item.descategoriaservicio}}</span>
+                    <span class="desruta">{{item.desruta}}</span>
                 </div>
                 <div class="descripcion-bus col-6">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora, minima qui repellat non sapiente atque odio cum amet odit dignissimos, dolores natus? Quos eveniet, consequatur dicta nobis reprehenderit natus voluptas?
+                    {{item.destipobus}}
                 </div>
                 <div class="row">
                     <div class="servicios-bus">
@@ -126,19 +131,19 @@
                     </div>
                     <div class="asientos-disponibles">
                         <span>Asientos disponibles</span>
-                        <span class="number-asientos">8</span>
+                        <span class="number-asientos">{{item.asientoslibres}}</span>
                     </div>
                     <div class="horario-tramo">
-                        <span>Horario salida:</span><span class="time-tramo">4:00pm</span><br>
-                        <span>Horario estimada de llegada:</span><span class="time-tramo">4:00pm</span>
-
+                        <span>Horario salida:</span><span class="time-tramo">{{item.horasalida}}</span><br>
+                        <span>Horario estimada de llegada:</span><span class="time-tramo">{{item.horallegada}}</span>
                     </div>
                 </div>
             </div>
             <div class="tarifa-bus">
                 <div class="price-tarifa">
-                    <span class="info-price">Precio:</span>
-                    <span>S/.</span><span>100</span>
+                    <span class="info-price">Precio Informacion:</span><br>
+                    <div class="price-primerpiso"><span>Precio Primer Piso: </span> <span>S/.</span><span>{{item.preciopisO1}}</span></div>
+                    <div class="price-segundopiso"><span>Precio Segundo Piso: </span> <span>S/.</span><span>{{item.preciopisO2}}</span></div>
                 </div>
                 <span>
                     <button class="btn btn-danger ml-4">Seleccionar</button>
@@ -148,7 +153,7 @@
         </div>
     </div>
 
-    <div>
+    <div style="display: none;">
         <div class="info-compra">
             <span class="number-tramo1">1</span>
             <span>Seleccione su asiento</span>

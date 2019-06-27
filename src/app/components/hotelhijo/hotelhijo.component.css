@@ -1,0 +1,639 @@
+.opciones {
+    width: 150px;
+    height: 60px;
+    border: 1px solid;
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    list-style: none;
+}
+
+.opciones:hover {
+    cursor: pointer;
+}
+
+.contenedor-buscador {
+    width: 1300px;
+    height: auto;
+    border: 1px solid;
+    color: black;
+    padding: 25px;
+    border-radius: 5px;
+    margin: 30px 0 30px 0;
+}
+
+.resultados-busqueda {
+    width: 1250px;
+    height: auto;
+    border: 1px solid;
+    color: black;
+    padding: 25px;
+    border-radius: 5px;
+    margin: 30px 0 30px 0;
+}
+
+.img-hotel {
+    width: 300px;
+    height: 300px;
+}
+
+.body-form {
+    width: 1250px;
+    height: auto;
+    border: 1px solid;
+    color: black;
+    padding: 25px;
+}
+
+.name-hotel {
+    display: block;
+    margin-bottom: -15px;
+}
+
+.icon-map {
+    width: 30px;
+}
+
+.detalle-tarifa {
+    text-align: center;
+}
+
+.name-street {
+    margin-left: 30px;
+    font-size: 14px;
+}
+
+.description-hotel {
+    margin-top: 10px;
+    display: block;
+}
+
+.number-star {
+    font-size: 25px;
+    letter-spacing: 10px;
+    margin-top: -15px;
+    display: block;
+}
+
+.description-distance {
+    display: block;
+    margin-top: -8px;
+}
+
+.tarifa-convenio {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.tarifa-total {
+    display: block;
+    margin-top: 5px;
+}
+
+.politicas {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+
+.btn-select {
+    margin-top: 10px;
+}
+
+.img-desplegar {
+    width: 60px;
+    height: 40px;
+    position: relative;
+    left: 540px;
+    top: 25px;
+}
+
+.contenedor-detalle_room {
+    width: 1400px;
+    height: auto;
+    border: 1px solid;
+    color: black;
+    padding: 25px;
+    border-radius: 5px;
+    margin: 30px 0 30px 0;
+}
+
+.img-hotel1 {
+    width: 450px;
+    height: 450px;
+}
+
+.img-hotel2 {
+    width: 100px;
+    height: 100px;
+}
+
+.lista-img li {
+    list-style: none;
+    display: inline-block;
+    margin: 8.5px;
+}
+
+.lista-img {
+    position: relative;
+    left: -48px;
+}
+
+.nombre-hotel {
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.number-star1 {
+    font-size: 30px;
+    letter-spacing: 10px;
+}
+
+.cabecera-nombre {
+    margin-bottom: 10px;
+}
+
+.detalle-time {
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.check-in {
+    margin-right: 13px;
+}
+
+.date1 {
+    margin-right: 30px;
+}
+
+.check-out {
+    margin-right: 13px;
+}
+
+.number-adultos {
+    margin-left: 20px;
+}
+
+.descripcion-habitacion {
+    width: 550px;
+    float: right;
+    position: relative;
+    bottom: 580px;
+    right: 200px;
+}
+
+.ubicacion {
+    margin-top: 10px;
+}
+
+.name-street1 {
+    margin-bottom: 15px;
+    display: block;
+}
+
+.descripcion-servicio {
+    position: relative;
+    top: 13px;
+    font-weight: bold;
+}
+
+.cabecera-servicios {
+    display: inline-block;
+}
+
+.detalle-servicios {
+    width: 1000px;
+    border: 1px solid;
+    color: black;
+    padding: 25px;
+    margin: 30px 0 30px 0;
+    height: 300px;
+}
+
+.des-check {
+    position: relative;
+    left: 500px;
+    bottom: 25px;
+}
+
+.servicios {
+    position: relative;
+    left: 700px;
+    bottom: 72px;
+}
+
+.item2 {
+    margin-right: 40px;
+}
+
+.item3 {
+    margin-right: 30px;
+}
+
+.list-services {
+    list-style: none;
+}
+
+.service {
+    margin-left: 15px;
+}
+
+.items-services {
+    position: relative;
+    left: -10px;
+    bottom: 50px;
+}
+
+.table-precios {
+    position: relative;
+    left: 550px;
+    bottom: 120px;
+}
+
+.contenedor-tarifa {
+    width: 300px;
+    height: auto;
+    border: 1px solid;
+    color: black;
+    padding: 25px;
+    border-radius: 5px;
+    margin: 30px 0 30px 0;
+    text-align: center;
+    float: right;
+    position: relative;
+    bottom: 360px;
+    right: 10px;
+}
+
+.price-total {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.descripcion-promedio {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.precio-promedio {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.img-convenio img {
+    width: 70px;
+    margin-bottom: 9px;
+}
+
+.img-convenio1 img {
+    width: 30px;
+    position: relative;
+    right: 10px;
+    bottom: 2px;
+}
+
+.item-tipo {
+    margin-left: 70px;
+}
+
+.item-categoria {
+    margin-left: 100px;
+}
+
+.item-capacidad {
+    margin-left: 15px;
+}
+
+.item-horario {
+    margin-left: 80px;
+}
+
+.item-politicas {
+    position: relative;
+    left: 120px;
+}
+
+.filtros-resultados {
+    width: 290px;
+    height: auto;
+    border: 1px solid rgb(0, 0, 0);
+    position: absolute;
+    left: 70px;
+    bottom: -540px;
+}
+
+.filtro-estrellas {
+    list-style: none;
+}
+
+.filtro-servicios {
+    list-style: none;
+}
+
+.filtro-precio {
+    list-style: none;
+}
+
+.resultados-hoteles {
+    display: inline-block;
+}
+
+.title-filtro {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.item-filter {
+    margin-left: 10px;
+}
+
+.filtro-estrellas li {
+    margin-top: 10px;
+}
+
+.filtro-servicios li {
+    margin-top: 10px;
+}
+
+.filtro-precio li {
+    margin-top: 10px;
+}
+
+.filter-order {
+    display: inline-flex;
+    margin-left: 200px;
+}
+
+.motel-gallery {
+    max-width: 1000px;
+}
+
+.img1 {
+    width: 900px;
+    height: 400px;
+    margin: 3px;
+    position: relative;
+}
+
+.img2 {
+    width: 400px;
+    height: 250px;
+    margin: 3px;
+    position: absolute;
+    bottom: 365px;
+    left: 1340px;
+}
+
+.img3 {
+    width: 195px;
+    height: 140px;
+    margin: 3px;
+    position: absolute;
+    bottom: 215px;
+    left: 1340px;
+}
+
+.img4 {
+    width: 195px;
+    height: 140px;
+    margin: 3px;
+    position: absolute;
+    bottom: 215px;
+    left: 1545px;
+}
+
+.btn-galeria {
+    position: absolute;
+    left: 1600px;
+    top: 400px;
+    z-index: 999;
+}
+
+.info-hotel-cabecera {
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.star {
+    margin-left: 20px;
+    letter-spacing: 5px;
+}
+
+.star i {
+    color: rgb(253, 201, 29);
+    font-size: 20px;
+}
+
+.title-hotel {
+    font-size: 25px;
+}
+
+.location-hotel {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.icon-map1 {
+    width: 20px;
+}
+
+.services-hotel {
+    margin-left: 17px;
+    margin-top: 20px;
+}
+
+.item-wifi {
+    margin-right: 8px;
+}
+
+.item-gimnasio {
+    margin-left: 15px;
+    margin-right: 8px;
+}
+
+.item-spa {
+    margin-left: 20px;
+}
+
+.seccion-habitacion {}
+
+.tooltipBag {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltipBagDiv {
+    width: 350px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    left: 50%;
+    margin-left: -170px;
+    border: 1px solid #cccccc;
+    display: block;
+}
+
+.tooltipBagDiv::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+    transform: rotate(900deg);
+}
+
+.number-adults {
+    display: inline-flex;
+    position: relative;
+    left: -40px;
+}
+
+.number-spinner {
+    position: relative;
+    left: 80px;
+    bottom: 7px;
+    width: 140px;
+}
+
+.btn-agregar {
+    display: inline-flex;
+}
+
+.añadir {
+    position: relative;
+    right: 10px;
+    bottom: 6px;
+}
+
+.title-room {
+    margin-right: 200px;
+    margin-top: 10px;
+}
+
+.text-btn {
+    margin-right: 100px;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    padding: 8px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.text-btn:hover {
+    border: 1px solid #fc0000;
+    color: #fc0000 !important;
+}
+
+
+/* estilos galeria */
+
+
+/*
+.demo {
+    width: 450px;
+    display: none;
+}
+
+ul {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+li {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}*/
+
+
+/* slider precios */
+
+.precio {
+    position: relative;
+    left: 10px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    position: relative;
+    top: 50px;
+    left: -40px;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.input-habitacion {
+    padding: 7px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    display: inline-flex;
+}
+
+.input-text {
+    width: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: none;
+    background-color: #ffffff;
+}
+
+.input-text:focus {
+    outline: none;
+}
+
+.nro-habitacion {
+    margin-left: 10px;
+}
+
+.nro-personas {
+    margin-left: 30px;
+}

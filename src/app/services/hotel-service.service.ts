@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { SearchHotel } from '../models/SearchHotel';
 import { observable, Observable } from 'rxjs';
 import { HotelResults } from '../models/HotelResults';
+import { Hotel } from '../models/hotel';
+import { HotelDetails } from '../models/HotelDetails';
 
 
 
@@ -12,8 +14,9 @@ import { HotelResults } from '../models/HotelResults';
 })
 export class HotelService {
 
-  url: string = 'http://172.16.3.15:8021/api/SearchHotel/SearchHotel';
+  url: string = 'http://172.16.3.20:8080/api/SearchHotel/SearchHotel';
   urlCiudades: string = 'http://172.16.3.15:8050/api/Airport/AirportList';
+  urlHotel: string = 'http://172.16.3.20:8080/api/SearchHotel/SearchHotelTwo';
 
   constructor(private http: HttpClient) { }
 
@@ -38,5 +41,13 @@ SearchHotel(search: SearchHotel): Observable<HotelResults[]> {
 }
   FilterAirport() {
     return this.http.get(this.urlCiudades);
+  }
+
+  Hotel(hotel: Hotel): Observable<HotelDetails[]> {
+    return this.http.post<HotelDetails[]>(`${this.url}`, hotel, {
+      headers: {
+        'Content-Type': 'application/json'
+    }
+    });
   }
 }

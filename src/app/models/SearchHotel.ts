@@ -1,4 +1,4 @@
-export class SearchHotel {
+export interface SearchHotel {
    HotelCityCode: string;
    category: string;
    Start: string;

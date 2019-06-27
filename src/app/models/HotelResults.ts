@@ -1,4 +1,4 @@
-export class HotelResults {
+export interface HotelResults {
     AddressLine: [];
     CityName: string;
     Code: string;

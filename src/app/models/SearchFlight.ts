@@ -1,4 +1,4 @@
-export class SearchFlight {
+export interface SearchFlight {
     TypeFlight: string;
     Origin: string[];
     Destination: string[];
