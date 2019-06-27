@@ -107,6 +107,7 @@ export class BusesComponent implements OnInit {
     $('#divCitydestino').show();
    }
   }
+  
 
   ConfigurarFiltro() {
 
