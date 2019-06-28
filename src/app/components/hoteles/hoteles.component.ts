@@ -45,16 +45,31 @@ export class HotelesComponent implements OnInit {
 	  MinRate: '100.00',
 	  cantidadh: '',
     cantidadp: '',
-    SegmentCategoryCode: '16'
+    SegmentCategoryCode: ''
   };
 
   CodeObj: any = {
     namecity: ''
   }   
 
+  estrella = [
+     { codigo: 13, descripcion: "1 Estrella - 2 Estrellas" },
+     { codigo: 16, descripcion: "3 Estrellas" },
+     { codigo: 7, descripcion: "4 Estrellas" },
+     { codigo: 8, descripcion: "5 Estrellas" }
+  ];  
+
   prueba: string = '150';
 
+  minDate: Date;
+  minDate2: Date;
+  dateCheckIn: any;
+  dateCheckOut: any;
+  isOpen = false;
+
   constructor(public service: HotelService) {
+    //this.minDate = new Date();
+    //this.minDate.setDate(this.minDate.getDate() - 1);
   }
 
   ngOnInit() {
@@ -68,6 +83,21 @@ export class HotelesComponent implements OnInit {
   }
 
 
+  fechaMinima(datepicker2) {
+    console.log(this.dateCheckIn);
+    //alert(this.dateCheckIn);
+
+    this.minDate = this.dateCheckIn;
+    //this.minDate.setDate(this.minDate.getDate() - 1);
+
+    //const txtDateCheckIn = $("#txtDateCheckIn").val();
+    //console.log(txtDateCheckIn);
+
+    console.log(datepicker2);
+    //datepicker2.toggle();
+
+    this.isOpen = true;
+  }
 
 
   ocultarResultados() {

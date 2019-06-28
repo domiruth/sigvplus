@@ -1,17 +1,21 @@
-<div id="dvFlightResults">
-    <div class="resultados-vuelos" id="dvRecomendation_1">
-        <div id="dvHeaderRecommendation_1"><span class="HeaderRecommendationNumber">1</span></div>
+<div id="dvFlightResults" style="display: block">
+    <div class="resultados-vuelos" *ngFor="let item of listado; let i = index">
+        <div id="dvHeaderRecommendation_{{i + 1}}">
+            <span class="HeaderRecommendationNumber">{{i + 1}}</span>
+            <span class="img-seudo"><img src="assets/{{item.pseudo}}.png"></span>
+        </div>
+
         <div id="dvBodyRecommendation_1">
             <div class="RecommendationContainerPrice">
-                <div class="RecommendationPrice">USD 110.18</div>
+                <div class="RecommendationPrice">{{item.currency}} {{item.totalFareAmount}} </div>
                 <div class="RecommendationPriceByPassenger">
                     <div class="precioxAdt">
                         <span>Precio por Adulto</span>
-                        <span class="price1">USD 110.18</span>
+                        <span class="price1">{{item.currency}} {{item.fareAmountByPassenger}}</span>
                     </div>
                     <div class="ImpxAdt">
                         <span>Impuestos por Adulto</span>
-                        <span class="price2">USD 30.18</span>
+                        <span class="price2">{{item.currency}} {{item.taxAmountByPassenger}}</span>
                         <span class="btn-details1"><i class="fas fa-angle-down fa-2x"></i></span>
                     </div>
                 </div>
@@ -19,27 +23,30 @@
                     <button class="btn btn-success col-5">Comprar</button>
                 </div>
             </div>
-            <div class="RecommendationContainerSegments">
-                <div class="segment-ida">
+            <div class="RecommendationContainerSegments" *ngFor="let itemSection of item.lSections">
+                <div class="segment-ida" *ngFor="let itemSegment of itemSection.lSegments">
                     <div class="dosCiudades">
-                        <div class="ciudad"><span class="ciudad__title">LIM</span>
+                        <div class="ciudad"><span class="ciudad__title">{{itemSection.origin}}</span>
                             <div class="ciudad_nombre">Jorge Chávez (Lima)</div>
                         </div><i class="fa fa-arrow-right"></i>
-                        <div class="ciudad"><span class="ciudad__title">CUZ</span>
+                        <div class="ciudad"><span class="ciudad__title">{{itemSection.destination}}</span>
                             <div class="ciudad_nombre">Alejandro Velasco AsteteAlejandro Velasco Astete (Cuzco)</div>
                         </div>
                     </div>
                     <div class="tablas">
                         <div class="row cabecera-segmento">
-                            <span class="round-trip">IDA</span>
+                            <span class="round-trip" *ngIf="tipovuelo === 'OW'">IDA</span>
+                            <span class="round-trip" *ngIf="tipovuelo === 'RT' && itemSection.sectionId === 1">IDA</span>
+                            <span class="round-trip" *ngIf="tipovuelo === 'RT' && itemSection.sectionId === 2">VUELTA</span>
+                            <span class="round-trip" *ngIf="tipovuelo === 'MC'">TRAMO {{itemSection.sectionId}}</span>
                             <span class="img-vuelo"><img src="assets/plane-departure.png"></span>
-                            <span class="date-trip">2019-05-14</span>
+                            <span class="date-trip">{{itemSection.departureDateShow}}</span>
                         </div>
-                        <div class="cuadro cuadro_salida">
+                        <div class="cuadro cuadro_salida" *ngFor="let itemSegmentgrup of itemSegment.lSegmentGroups">
                             <div class="cuadro_body">
                                 <div class="row segmento">
                                     <input type="radio" class="cuadro__circle formato_correo"><img class="cuadro_logo" src="assets/plane.png">
-                                    <div class="cuadro_time">0450</div><span class="cuadro_toltip despliegaToltip tooltipstered">Directo</span>
+                                    <div class="cuadro_time">{{itemSegmentgrup.timeOfDepartureShow}}</div><span class="cuadro_toltip despliegaToltip tooltipstered">Directo</span>
                                     <div class="cuadro_time2">0610</div>
                                     <div class="segmento_durac">1d 2 h 15 min</div>
                                     <div class="info-equipaje tooltipBag"><span class="img-equipaje"><img src="http://localhost:6870/Images/maleta.png" class="imgBagColor"></span><span class="img-equipaje"><img src="http://localhost:6870/Images/equipaje.png" class="imgBagColor"></span>
@@ -48,62 +55,6 @@
                                             <div><span class="img-modal2"><img src="http://localhost:6870/Images/equipaje.png" title="Maleta en bodega"></span><span class="info-equipaje2">Incluye equipaje en bodega</span><br><span class="cant-equipajes">2 maletas por adulto</span></div>
                                         </div>
                                     </div>
-                                    <div class="btn-details">
-                                        <span><i class="fas fa-angle-down fa-2x"></i></span>
-                                    </div>
-                                </div>
-                                <div class="row segmento">
-                                    <input type="radio" class="cuadro__circle formato_correo"><img class="cuadro_logo" src="assets/plane.png">
-                                    <div class="cuadro_time">0450</div><span class="cuadro_toltip despliegaToltip relative tooltipstered">Escala<span class="circle_absolute"></span></span>
-                                    <div class="cuadro_time2">0610</div>
-                                    <div class="segmento_durac">1d 2 h 15 min</div>
-                                    <div class="info-equipaje tooltipBag"><span class="img-equipaje"><img src="http://localhost:6870/Images/maleta.png" class="imgBagColor"></span><span class="img-equipaje"><img src="http://localhost:6870/Images/equipaje.png" class="imgBagColor"></span>
-                                        <div class="modal-info tooltipBagDiv" id="pop1">
-                                            <div><span class="img-modal1"><img src="http://localhost:6870/Images/maleta.png" title="Maleta en mano"></span><span class="info-equipaje1">Incluye equipaje de mano</span></div>
-                                            <div><span class="img-modal2"><img src="http://localhost:6870/Images/equipaje.png" title="Maleta en bodega"></span><span class="info-equipaje2">Incluye equipaje en bodega</span><br><span class="cant-equipajes">2 maletas por adulto</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="btn-details">
-                                        <span><i class="fas fa-angle-down fa-2x"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="segment-vuelta">
-                    <div class="dosCiudades">
-                        <div class="ciudad"><span class="ciudad__title">LIM</span>
-                            <div class="ciudad_nombre">Jorge Chávez (Lima)</div>
-                        </div><i class="fa fa-arrow-right"></i>
-                        <div class="ciudad"><span class="ciudad__title">CUZ</span>
-                            <div class="ciudad_nombre">Alejandro Velasco AsteteAlejandro Velasco Astete (Cuzco)</div>
-                        </div>
-                    </div>
-                    <div class="tablas">
-                        <div class="row cabecera-segmento">
-                            <span class="round-trip">VUELTA</span>
-                            <span class="img-vuelo"><img src="assets/plane-arrival.png"></span>
-                            <span class="date-trip">2019-05-14</span>
-                        </div>
-                        <div class="cuadro cuadro_salida">
-                            <div class="cuadro_body">
-                                <div class="row segmento">
-                                    <input type="radio" class="cuadro__circle formato_correo"><img class="cuadro_logo" src="assets/plane.png">
-                                    <div class="cuadro_time">0450</div><span class="cuadro_toltip despliegaToltip tooltipstered">Directo</span>
-                                    <div class="cuadro_time2">0610</div>
-                                    <div class="segmento_durac">01:20:00</div>
-                                    <div class="btn-details">
-                                        <span><i class="fas fa-angle-down fa-2x"></i></span>
-                                    </div>
-                                </div>
-                                <div class="row segmento">
-                                    <input type="radio" class="cuadro__circle formato_correo"><img class="cuadro_logo" src="assets/plane.png">
-                                    <div class="cuadro_time">0450</div><span class="cuadro_toltip despliegaToltip relative tooltipstered">Escala<span class="circle_absolute"></span></span>
-                                    <div class="cuadro_time2">0610</div>
-                                    <div class="segmento_durac">01:20:00</div>
                                     <div class="btn-details">
                                         <span><i class="fas fa-angle-down fa-2x"></i></span>
                                     </div>

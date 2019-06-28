@@ -38,19 +38,19 @@
             <div class="row">
                 <div class="form-group mt-3 col-sm-6" id="dvOrigin_1">
                     <label for="txtOrigin_1">Origen</label>
-                    <input type="text" class="form-control selectAirport" id="txtOrigin_1" [(ngModel)]="searchObj.Origin">
-                    <!--   <div id="dvAirportOrigin_1" class="options selectAirport"></div> -->
+                    <input type="text" class="form-control selectAirport" id="txtOrigin_1" (keydown)="filterAirport(1,1,1)" [(ngModel)]="ciudadObj.salida">
+                    <app-airport [listado]="MatrizAirport2" (texto1)="eventoHijoPadre($event)"></app-airport>
                 </div>
                 <div class="form-group mt-3 col-sm-6" id="dvDestination_1">
                     <label for="txtDestination_1">Destino</label>
-                    <input type="text" class="form-control selectAirport" id="txtDestination_1" [(ngModel)]="searchObj.Destination">
-                    <!--    <div id="dvAirportDestination_1" class="options selectAirport"></div> -->
+                    <input type="text" class="form-control selectAirport" id="txtDestination_1" (keydown)="filterAirport(1,1,2)" [(ngModel)]="ciudadObj.llegada">
+                    <app-airport-destino [listado2]="MatrizAirport2" (city)="eventoDestino($event)"></app-airport-destino>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group mt-3 col-sm-3" id="dvDepartureDate_1">
                     <label for="txtFechaSalida_1">Fecha Salida</label><br>
-                    <input type="date" class="form-control" id="txtFechaSalida_1" [(ngModel)]="searchObj.DepartureArrivalDate">
+                    <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }" class="form-control" [(ngModel)]="dateObj.fechaini">
                 </div>
                 <div class="form-group mt-3 col-sm-3" id="dvDepartureTime_1">
                     <label>Hora de Salida</label><br>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="form-group mt-3 col-sm-3" id="dvArrivalDate_1">
                     <label for="txtFechaRetorno_1">Fecha Retorno</label><br>
-                    <input type="date" class="form-control" id="txtFechaRetorno_1" [(ngModel)]="searchObj.DepartureArrivalDate">
+                    <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }" class="form-control" id="txtFechaRetorno_1" [(ngModel)]="dateObj.fechafin">
                 </div>
                 <div class="form-group mt-3 col-sm-3" id="dvArrivalTime_1">
                     <label>Hora de Retorno</label><br>
@@ -156,29 +156,29 @@
         <div id="multiOption_2"></div>
 
         <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group mt-3 col-7">
-                    <label>Pasajeros</label>
-                    <select class="form-control">
+            <div class="form-group mt-3 col-sm-3">
+                <label>Pasajeros</label>
+                <select class="form-control">
                       <option value="">03</option>
                   </select>
-                </div>
-                <div class="form-group mt-3 col-7">
-                    <label>Cabina</label>
-                    <select class="form-control">
+            </div>
+            <div class="form-group mt-3 col-sm-3">
+                <label>Cabina</label>
+                <select class="form-control">
                       <option value="">Economica</option>
                   </select>
-                </div>
-                <div class="form-group mt-3 col-7">
-                    <label>Escalas</label>
-                    <select class="form-control">
+            </div>
+            <div class="form-group mt-3 col-sm-3">
+                <label>Escalas</label>
+                <select class="form-control">
                       <option value="">Sin Escalas</option>
                   </select>
-                </div>
             </div>
         </div>
     </div>
     <div class="form-group">
         <input type="button" value="Buscar" class="btn btn-primary col-2" id="btnSearch" (click)="SearchFlight()" />
     </div>
+
+    <app-results [listado]="result" [tipovuelo]="searchObj.TypeFlight"></app-results>
 </div>

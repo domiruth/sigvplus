@@ -8,7 +8,8 @@ export interface SearchFlight {
     NumberPassengers: string;
     CabinType: string;
     Company: string;
-    Pseudo: string;
+    Pseudo: [];
     Currency: string;
-
+    UserDemo: number;
+    NumberRecommendations: string;
 }

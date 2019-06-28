@@ -1005,3 +1005,8 @@ ul {
     color: rgba(162, 179, 176, 0.788);
     font-weight: bold;
 }
+
+.img-seudo img {
+    width: 50px;
+    margin-left: 20px;
+}

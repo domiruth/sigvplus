@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SearchFlight } from '../models/SearchFlight';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of  } from 'rxjs';
+import { VuelosResults } from '../models/VuelosResults';
 
 
 
@@ -12,7 +13,8 @@ import { Observable, throwError, of  } from 'rxjs';
 export class VueloService {
 
 
-  url: string = 'http://172.16.3.15:8084/SearchFlight';
+  url: string = 'http://172.16.3.15:7010/api/SearchFlight/SearchFlight';
+  urlCiudades: string = 'http://172.16.3.15:8050/api/Airport/AirportList';
 
   constructor(private http: HttpClient) { }
 
@@ -22,8 +24,15 @@ export class VueloService {
     return this.http.get<Cliente[]>(this.url);
   }
 */
-  SearchFlight(search: SearchFlight) {
-   return this.http.post(this.url, search);
+  SearchFlight(search: SearchFlight): Observable<VuelosResults[]> {
+   return this.http.post<VuelosResults[]>(`${this.url}`, search, {
+    headers: {
+      'Content-Type': 'application/json'
   }
-  
+   });
+  }
+
+  FilterAirport() {
+    return this.http.get(this.urlCiudades);
+  }
 }

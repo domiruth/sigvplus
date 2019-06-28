@@ -7,10 +7,49 @@
         <span><img src="assets/map.png" class="icon-map"></span><span>Mapa</span>
         <span class="name-street">{{item.AddressLine}}</span><br>
         <span class="description-hotel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem laborum quaerat dolor necessitatibus voluptate, ut minus, est ea nobis ducimus odio iusto dolore in laudantium inventore rerum, exercitationem blanditiis non!</span><br>
-        <div [ngSwitch]="item.HotelSegmentCategoryCode ">
-            <span class="number-star">
-                        <i class="fas fa-star fa-1x"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </span><br>
+        <div>
+            <span *ngIf="item.HotelSegmentCategoryCode==1" class="number-star">
+                    <i class="fas fa-star fa-1x"></i>
+                    </span>
+
+            <span *ngIf="item.HotelSegmentCategoryCode==2" class="number-star">
+                    <i class="fas fa-star fa-1x"></i>
+                    <i class="fas fa-star"></i>
+                    </span>
+
+            <span *ngIf="item.HotelSegmentCategoryCode==3" class="number-star">
+                    <i class="fas fa-star fa-1x"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    </span>
+
+            <span *ngIf="item.HotelSegmentCategoryCode==4" class="number-star">
+                    <i class="fas fa-star fa-1x"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    </span>
+
+            <span *ngIf="item.HotelSegmentCategoryCode==5" class="number-star">
+                    <i class="fas fa-star fa-1x"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    </span>
+
+            <span *ngIf="item.HotelSegmentCategoryCode==6" class="number-star">
+                    <i class="fas fa-star fa-1x"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    </span>
+
+            <br>
+
+
         </div>
         <div class="description-distance">
             <span style="display: none;">2.2 km al centro de la ciudad</span><br>

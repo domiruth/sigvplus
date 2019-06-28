@@ -38,7 +38,12 @@
                 <div class="form-group">
                     <label for="" class="col-form-label">Check-In: </label>
                     <div class="">
-                        <input class="form-control mx-sm-4" [(ngModel)]="SearchObj.Start">
+                        <input type="date" class="form-control mx-sm-4" [(ngModel)]="SearchObj.Start">
+                        <!--
+                      <input id="txtDateCheckIn" [(ngModel)]="dateCheckIn" type="text" class="form-control" #datepicker1="bsDatepicker" bsDatepicker (onHidden)="fechaMinima(datepicker2);" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  selectFromOtherMonth: true }">
+
+                        <input id="txtDateCheckOut" [(ngModel)]="dateCheckOut" type="text" class="form-control" #datepicker2="bsDatepicker" bsDatepicker [minDate]="minDate" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }" [isOpen]="isOpen">
+                    -->
                     </div>
                 </div>
 
@@ -101,6 +106,7 @@
                         </div>
                     </div>
                 </div>
+                <!--
                 <label for="" class="col-sm-2 col-form-label" style="margin-left: 150px; display: block;">Cercania al Aereopuerto: </label>
                 <div class="col-sm-2">
                     <select name="" id="" class="form-control">
@@ -108,18 +114,14 @@
                       <option value="2">2</option>
                       <option value="3">3</option>
                     </select>
-                </div>
+                </div>-->
             </div>
 
             <div class="form-group row mt-4">
                 <label for="" class="col-sm-1 col-form-label">Estrellas </label>
                 <div class="col-sm-2">
                     <select name="" id="" class="form-control">
-                        <option value="13">1 Estrella</option>
-                        <option value="13">2 Estrellas</option>
-                        <option value="16">3 Estrellas</option>
-                        <option value="7">4 Estrellas</option>
-                        <option value="8">5 Estrellas</option>
+                        <option [(ngModel)]="SearchObj.SegmentCategoryCode" *ngFor="let item of estrella">{{item.descripcion}}</option>
                       </select>
                 </div>
             </div>

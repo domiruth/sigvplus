@@ -23,6 +23,8 @@ import { LoginService } from './services/login.service';
 import { HotelhijoComponent } from './components/hotelhijo/hotelhijo.component';
 import { CityComponent } from './components/city/city.component';
 import { CitydestinoComponent } from './components/citydestino/citydestino.component';
+import { DetalleVueloComponent } from './components/detalle-vuelo/detalle-vuelo.component';
+import { AirportDestinoComponent } from './components/airport-destino/airport-destino.component';
 
 
 
@@ -40,7 +42,9 @@ import { CitydestinoComponent } from './components/citydestino/citydestino.compo
     LoginComponent,
     HotelhijoComponent,
     CityComponent,
-    CitydestinoComponent
+    CitydestinoComponent,
+    DetalleVueloComponent,
+    AirportDestinoComponent
   ],
   imports: [
     BrowserModule,
